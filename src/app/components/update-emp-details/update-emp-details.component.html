@@ -1,0 +1,213 @@
+<div class="container-fluid web-form">
+    <form name="form" (ngSubmit)="f.form.valid && updateDetails()" #f="ngForm" novalidate>
+        <div class="card card-body border-0 mt-3 p-md-4 pl-md-5">
+            <h5>Identification </h5>
+            <div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="FirstName">First Name</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="FirstName" id="FirstName"
+                                    [(ngModel)]="createProductObj.Identification.FirstName" class="form-control form-group"
+                                    #FirstName="ngModel" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="Gender">Gender</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                    <label class="radio-inline" *ngFor ="let gen of genderOptions">
+                                            <input type="radio" name="Gender" [value]="gen.value" [(ngModel)]="createProductObj.Identification.Gender" ><span class="ml-2 mr-2">{{gen.title}}</span>
+                                        </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="LastName">Last Name</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="LastName" id="LastName" [(ngModel)]="createProductObj.Identification.LastName"
+                                    class="form-control form-group" #LastName="ngModel" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="Title">Title</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="Title" id="Title" [(ngModel)]="createProductObj.Identification.Title"
+                                        class="form-control form-group" #Title="ngModel" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="DOB">DOB</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+
+                                <input type="text" class="form-control" name="DOB" id="DOB"
+                                    [(ngModel)]="createProductObj.Identification.DOB" #DOB="ngModel" [minDate]="minDate"
+                                    [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="myDateValue"
+                                    [bsConfig]="bsConfig" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-body border-0 p-md-4 pl-md-5">
+            <h5>Address </h5>
+            <div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aType">Type</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="aType" id="aType" [(ngModel)]="createProductObj.Address.type"
+                                    class="form-control form-group" #aType="ngModel" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aStreet">Street</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" class="form-control" name="aStreet" id="aStreet"
+                                    [(ngModel)]="createProductObj.Address.street" #aStreet="ngModel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aNumber">Number</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="aNumber" id="aNumber"
+                                    [(ngModel)]="createProductObj.Address.number" class="form-control form-group"
+                                    #aNumber="ngModel" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aCity">City</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="aCity" id="aCity"
+                                        [(ngModel)]="createProductObj.Address.City" class="form-control form-group"
+                                        #aCity="ngModel" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aUnit">Unit</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="aUnit" id="aUnit" [(ngModel)]="createProductObj.Address.Unit"
+                                    class="form-control form-group" #aUnit="ngModel" required />
+                            </div>
+                        </div>
+                        <div class="row mb-1">
+
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aState">State</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="aState" id="aState"
+                                    [(ngModel)]="createProductObj.Address.State" class="form-control form-group"
+                                    #aState="ngModel" required />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="aZipcode">Zipcode</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="aZipcode" id="aZipcode"
+                                    [(ngModel)]="createProductObj.Address.zipcode" class="form-control form-group"
+                                    #aZipcode="ngModel" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-body border-0 p-md-4 pl-md-5">
+            <h5>Communication </h5>
+            <div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="cType">Type</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="cType" id="cType"
+                                    [(ngModel)]="createProductObj.Communication.type" class="form-control form-group"
+                                    #cType="ngModel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="cValue">Value</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" name="cValue" id="cValue"
+                                    [(ngModel)]="createProductObj.Communication.value" class="form-control form-group"
+                                    #cValue="ngModel" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8">
+                        <div class="row mb-1">
+                            <div class="col-md-5 col-xl-4 col-lg-5 align-self-center">
+                                <label for="preferred">Preferred</label>
+                            </div>
+                            <div class="col-md-7 col-xl-5 col-lg-6">
+                                <input type="text" class="form-control" name="preferred" id="preferred"
+                                    [(ngModel)]="createProductObj.Communication.preferred" #preferred="ngModel"
+                                    required />
+                            </div>
+                        </div>
+
+                    </div>
+                    <p class="text-success">{{successText.message}}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="d-inline-flex offset-md-8 offset-lg-9 offset-xl-10 mx-xs-auto">
+                <button class="btn btn-primary mr-4" [routerLink]="['/home']">Cancel</button>
+                <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary"
+                    style="padding: .375rem 1.15rem;">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,76 @@
+<div class="container-fluid app-content bg-white">
+  <div class="row mt-3">
+    <div class="col-12 d-flex">
+      <div class="col-6 d-flex">
+        <input type="text" class="form-control col-4 form-group" [(ngModel)]="userId">
+          <button class="btn btn-primary ml-2" [disabled]= "!userId" style="height: 39px" (click)="getEmpDetails()">Submit</button>
+      </div>
+      <div class="col-6 text-right">
+          <button class="btn btn-primary" [routerLink]= "['/create']">Create New</button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf= "showContent">
+
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Identification</th>
+            <th scope="col">Address</th>
+            <th scope="col">Communication</th>
+            <th scope="col">Update/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <ul class="list-group">
+                <li class="list-group-item p-0"><label class="width-20"><b>First Name </b></label>
+                   {{employeeList.Identification.FirstName}}</li>
+                <li class="list-group-item p-0"><label class="width-20"><b>Last Name  </b></label> {{employeeList.Identification.LastName}}</li>
+                <li class="list-group-item p-0"><label class="width-20"><b>Date Of Birth  </b></label>{{employeeList.Identification.DOB}}</li>
+                <li class="list-group-item p-0"><label class="width-20"><b>Gender  </b></label>{{employeeList.Identification.Gender}}</li>
+                <li class="list-group-item p-0"><label class="width-20"><b>Title  </b></label>{{employeeList.Identification.Title}}</li>              
+              </ul>
+            </td>
+            <td>
+                <ul class="list-group" *ngFor="let addr of employeeList.Address; let i =index">
+                  <b class="mb-2"> <i> <u> Address : <span>{{i+1}}</span></u></i>
+                    </b>
+
+                    <li class="list-group-item p-0"><label class="width-20"><b>Type </b></label>
+                       {{addr.type}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Number  </b></label> {{addr.number}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Street  </b></label>{{addr.street}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Unit  </b></label>{{addr.Unit}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>City  </b></label>{{addr.City}}</li>   
+                    <li class="list-group-item p-0"><label class="width-20"><b>State  </b></label>{{addr.State}}</li>             
+                   <li class="list-group-item p-0"><label class="width-20"><b>Zipcode  </b></label>{{addr.zipcode}}</li>            
+
+                  </ul>        
+            </td>
+            <td>
+                <ul class="list-group" *ngFor="let addr of employeeList.Communication; let i =index">
+                  <b class="mb-2"> <i> <u> Communication Type : <span class="">{{i+1}}</span></u></i>
+                  </b>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Type </b></label>{{addr.type}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Value  </b></label> {{addr.value}}</li>
+                    <li class="list-group-item p-0"><label class="width-20"><b>Preferred  </b></label>{{addr.preferred}}</li>                    
+                   </ul>        
+
+            </td>
+            <td class="text-center">
+              <button *ngIf="(employeeList | json) != '{}'" class="btn btn-success px-4" [routerLink]= "['/edit', userId]">EDIT</button>
+              <button class="btn btn-danger ml-2 px-4" [disabled] = "!userId" (click)="removeDetails()">Delete</button>
+            </td>        
+
+          </tr>         
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
